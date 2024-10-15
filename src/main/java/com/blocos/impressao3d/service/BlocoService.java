@@ -1,8 +1,8 @@
 package com.blocos.impressao3d.service;
 
 
-import com.blocos.impressao3d.entity.Pedido;
-import com.blocos.impressao3d.repositories.PedidoRepository;
+import com.blocos.impressao3d.entity.Bloco;
+import com.blocos.impressao3d.repositories.BlocoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,22 +10,22 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PedidoService {
+public class BlocoService {
 
     @Autowired
-    private PedidoRepository pedidoRepository;
+    private BlocoRepository pedidoRepository;
 
-    public Pedido criarPedido(Pedido pedido){
+    public Bloco criarPedido(Bloco pedido){
         return pedidoRepository.save(pedido);
     }
-    public List<Pedido> listarPedidos(){
+    public List<Bloco> listarPedidos(){
         return pedidoRepository.findAll();
     }
-    public Optional<Pedido> obterPedidoPorId(Long id) {
+    public Optional<Bloco> obterPedidoPorId(Long id) {
         return pedidoRepository.findById(id);
     }
 
-    public Pedido atualizarPedido(Long id, Pedido novoPedido) {
+    public Bloco atualizarPedido(Long id, Bloco novoPedido) {
         return pedidoRepository.findById(id)
                 .map(pedido -> {
                     pedido.setAndares(novoPedido.getAndares());
